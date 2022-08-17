@@ -144,7 +144,7 @@ function Cart() {
 
     const purchased = 
     <PurchasedInfo>
-        Purchased Order Successfully
+        Purchased Products Successfully
     </PurchasedInfo>
 
     return (
