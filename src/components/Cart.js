@@ -8,6 +8,10 @@ const CartContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media (max-width: 600px){
+        padding: 20px 30px;
+    }
 `;
 
 const CartInfo = styled.div`
@@ -15,10 +19,14 @@ const CartInfo = styled.div`
     height: 100px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* flex-direction: column; */
     padding: 5px 30px;
     align-items: center;
+
+    @media (max-width: 600px){
+        flex-direction: column;
+    }
 `;
 
 const CheckoutButton = styled.button`
@@ -30,6 +38,11 @@ const CheckoutButton = styled.button`
     color: white;
     font-size: large;
     cursor: pointer;
+
+    @media (max-width: 600px){
+        width: 200px;
+    }
+    
 `;
 
 const DisabledCheckoutButton = styled.button`
@@ -41,6 +54,10 @@ const DisabledCheckoutButton = styled.button`
     color: white;
     font-size: large;
     cursor: not-allowed;
+
+    @media (max-width: 600px){
+        width: 200px;
+    }
 `;
 
 function Cart() {

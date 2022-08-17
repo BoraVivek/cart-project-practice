@@ -16,6 +16,9 @@ const HeaderContainer = styled.div`
     align-items: center;
     background: #108dba;;
     box-shadow: 1px 1px 10px 1px #3faddf inset, 2px 2px 10px 3px #aaaaaa;
+    @media (max-width: 600px){
+        padding: 5px 30px;
+    }
 `;
 
 const CartImage = styled.div`
