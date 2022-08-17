@@ -19,13 +19,14 @@ const CartInfo = styled.div`
     height: 100px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     /* flex-direction: column; */
     padding: 5px 30px;
     align-items: center;
 
     @media (max-width: 600px){
         flex-direction: column;
+        justify-content: space-around;
     }
 `;
 
@@ -60,6 +61,14 @@ const DisabledCheckoutButton = styled.button`
     }
 `;
 
+const PurchasedInfo = styled.div`
+    text-align: center;
+    background: green;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+`;
+
 function Cart() {
 
     const [products, setProducts] = useState([
@@ -80,6 +89,7 @@ function Cart() {
     ]);
 
     const [isDisabled, setDisabled] = useState(false);
+    const [isCheckedOut, setCheckedOut] = useState(false);
 
     let totalAmount = 0;
     products.forEach((product) => {
@@ -127,6 +137,16 @@ function Cart() {
         setProducts(newProducts);
     }
 
+    function checkoutOrder(){
+        setCheckedOut(true);
+        setProducts([]);
+    }
+
+    const purchased = 
+    <PurchasedInfo>
+        Purchased Order Successfully
+    </PurchasedInfo>
+
     return (
         <CartContainer>
             {products.map((product) =>
@@ -135,6 +155,8 @@ function Cart() {
                     decreaseQuantity={handleDecreaseQuantity}
                     key={product.product_id} />)
             }
+
+            {isCheckedOut && purchased}
 
             <CartInfo>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -145,7 +167,7 @@ function Cart() {
                         Total Products: {totalProducts}
                     </span>
                 </div>
-                {isDisabled ? <DisabledCheckoutButton disabled="disabled">Checkout</DisabledCheckoutButton> : <CheckoutButton>Checkout</CheckoutButton>}
+                {isDisabled ? <DisabledCheckoutButton disabled="disabled">Checkout</DisabledCheckoutButton> : <CheckoutButton onClick={checkoutOrder}>Checkout</CheckoutButton>}
             </CartInfo>
         </CartContainer>
     );
